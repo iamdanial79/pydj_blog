@@ -5,7 +5,6 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Blogpy</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -47,19 +46,14 @@
     ================================================== -->
     <header class="s-header header">
 
-        <div class="header__logo">
-            <a class="logo" href="index.html">
-                BLOGPY
-            </a>
 
-        </div> <!-- end header__logo -->
         <a class="header__toggle-menu" href="#0" title="Menu"><span>منو</span></a>
         <nav class="header__nav-wrap">
 
             <h2 class="header__nav-heading h6">هدایت به</h2>
 
             <ul class="header__nav">
-                <li><a href="page-contact.html" title="">تماس</a></li>
+                <li><a href="{% url 'contact' %}" title="">تماس</a></li>
                 <li><a href="page-about.html" title="">درباره</a></li>
                 <li>
                     <a href="category.html" title="">دسته بندی</a>
@@ -82,84 +76,28 @@
             <div class="col-full">
 
                 <div class="featured-slider featured" data-aos="zoom-in">
-
+                    {% for promotions in poromote_data %}
                     <div class="featured__slide">
                         <div class="entry">
 
-                            <div class="entry__background" style="background-image:url('static/images/thumbs/featured/featured-guitarman.jpg');"></div>
+                            <div class="entry__background" style='background-image:url("{{ promotions.cover.url }}");'></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">موزیک</a></span>
+                                <span class="entry__category"><a href="#0">{{promotions.category}}</a></span>
 
-                                <h1><a href="#0" title="">آنچه ترجیح موسیقی تان درباره شما و شخصیت شما می گوید</a></h1>
+                                <h1><a href="#0" title="">{{promotions.title}}</a></h1>
 
                                 <div class="entry__info">
-                                    <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="static/images/avatars/user-05.jpeg" alt="">
-                                    </a>
                                     <ul class="entry__meta">
-                                        <li><a href="#0">محمد بابازاده</a></li>
-                                        <li>June 02, 2018</li>
+                                        <li><a href="#0">{{promotions.author}}</a></li>
                                     </ul>
                                 </div>
                             </div> <!-- end entry__content -->
 
                         </div> <!-- end entry -->
                     </div> <!-- end featured__slide -->
+                    {% endfor %}
 
-                    <div class="featured__slide">
-
-                        <div class="entry">
-
-                            <div class="entry__background" style="background-image:url('static/images/thumbs/featured/featured-watch.jpg');"></div>
-
-                            <div class="entry__content">
-                                <span class="entry__category"><a href="#0">مدیریت</a></span>
-
-                                <h1><a href="#0" title="">تکنیک پومودورو واقعاً کار می کند</a></h1>
-
-                                <div class="entry__info">
-                                    <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="static/images/avatars/user-03.jpeg" alt="">
-                                    </a>
-
-                                    <ul class="entry__meta">
-                                        <li><a href="#0">محمد بابازاده</a></li>
-                                        <li>June 13, 2018</li>
-                                    </ul>
-                                </div>
-                            </div> <!-- end entry__content -->
-
-                        </div> <!-- end entry -->
-
-                    </div> <!-- end featured__slide -->
-
-                    <div class="featured__slide">
-
-                        <div class="entry">
-
-                            <div class="entry__background" style="background-image:url('static/images/thumbs/featured/featured-beetle.jpg');"></div>
-
-                            <div class="entry__content">
-                                <span class="entry__category"><a href="#0">سبک زندگی</a></span>
-
-                                <h1><a href="#0" title="">تفاوت بین اتومبیل های کلاسیک ،قدیمی و آنتیک </a></h1>
-
-                                <div class="entry__info">
-                                    <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="static/images/avatars/user-03.jpeg" alt="">
-                                    </a>
-
-                                    <ul class="entry__meta">
-                                        <li><a href="#0">محمد بابازاده</a></li>
-                                        <li>June 12, 2018</li>
-                                    </ul>
-                                </div>
-                            </div> <!-- end entry__content -->
-
-                        </div> <!-- end entry -->
-
-                    </div> <!-- end featured__slide -->
 
                 </div> <!-- end featured -->
 

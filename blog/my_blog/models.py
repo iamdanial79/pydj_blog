@@ -20,6 +20,7 @@ class article(models.Model):
     created_at = models.DateTimeField(default=datetime.now , blank=False)
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
     author = models.ForeignKey(userprofile, on_delete=models.CASCADE)
+    poromote = models.BooleanField(default=False)
 
 
 
