@@ -10,7 +10,8 @@ class userprofile(models.Model):
     user = models.OneToOneField( User,on_delete=models.CASCADE )
     avatar = models.ImageField( upload_to="files/user_avatar/", null=True , blank=True )
     description = models.CharField(max_length=5000)
-
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name
 #add article field
 class article(models.Model):
     title = models.CharField( max_length=200 , null=False , blank=False )
@@ -18,7 +19,7 @@ class article(models.Model):
     content = RichTextField()
     created_at = models.DateTimeField(default=datetime.now , blank=False)
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
-    author = models.OneToOneField(userprofile, on_delete=models.CASCADE)
+    author = models.ForeignKey(userprofile, on_delete=models.CASCADE)
 
 
 
