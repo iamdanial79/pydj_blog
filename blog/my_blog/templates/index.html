@@ -56,10 +56,10 @@
                 <li><a href="{% url 'contact' %}" title="">تماس</a></li>
                 <li><a href="{% url 'about' %}" title="">درباره</a></li>
                 <li>
-                    <a href="category.html" title="">دسته بندی</a>
+                    <a href="{% url 'category' %}" title="">دسته بندی</a>
                 </li>
 
-                              <li class="current"><a href="index.html" title="">خانه</a></li>
+                              <li class="current"><a href="{% url 'index' %}" title="">خانه</a></li>
             </ul> <!-- end header__nav -->
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
@@ -117,20 +117,20 @@
 
                     <div class="item-entry" data-aos="zoom-in">
                         <div class="item-entry__thumb">
-                            <a href="single-standard.html" class="item-entry__thumb-link">
+                            <a href="{% url 'article' %}" class="item-entry__thumb-link">
                                 <img src="{{ article.cover.url }}" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="category.html">"{{article.category}}"</a>
+                                <a href="{% url 'category' %}">"{{article.category}}"</a>
                             </div>
 
-                            <h1 class="item-entry__title"><a href="single-standard.html">{{ article.title }}</a></h1> <!--add title-->
+                            <h1 class="item-entry__title"><a href="{% url 'article' %}">{{ article.title }}</a></h1> <!--add title-->
 
                             <div class="item-entry__date">
-                                <a href="single-standard.html">{{ article.article_date }}</a>
+                                <a href="{% url 'article' %}">{{ article.article_date }}</a>
                             </div>
                         </div>
                     </div> <!-- item-entry -->

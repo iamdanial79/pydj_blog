@@ -77,23 +77,22 @@
 
         <div class="row narrow">
             <div class="col-full s-content__header">
-                <h1 class="display-1 display-1--with-line-sep">با ما در تماس باشید</h1>
-                <p class="lead">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای</p>
+                <h1 class="display-1 display-1--with-line-sep"></h1>
+                <p class="lead">{{ article.content }}</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-full s-content__main">
                 <p>
-                <img src="static/images/thumbs/contact/contact-1000.jpg"
+                <img src="{{ article.cover.url }}"
                      srcset="static/images/thumbs/contact/contact-2000.jpg 2000w,
                              static/images/thumbs/contact/contact-1000.jpg 1000w,
                              static/images/thumbs/contact/contact-500.jpg 500w"
                      sizes="(max-width: 2000px) 100vw, 2000px" alt="">
                 </p>
 
-                <h2 style="text-align: right">سلام</h2>
+                <h2 style="text-align: right">{{article.title}}</h2>
 
                 <p>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه مجله در ستون و سطر آنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
@@ -104,28 +103,7 @@
 
 
 
-                <div class="row">
-                    <div class="col-six tab-full">
-                        <h4 style="text-align: right;">ادرس ما</h4>
 
-                        <p>
-                        1600 Amphitheatre Parkway<br>
-                        Mountain View, CA<br>
-                        94043 US
-                        </p>
-
-                    </div>
-
-                    <div class="col-six tab-full">
-                        <h4 style="text-align: right">اطلاعات تماس</h4>
-
-                        <p>sayhello@wordsmith.com<br>
-                        info@wordsmith.com <br>
-                        Phone: (+1) 123 456
-                        </p>
-
-                    </div>
-                </div>
 
             </div> <!-- s-content__main -->
         </div> <!-- end row -->
@@ -144,7 +122,7 @@
 
             <div class="col-six tab-full s-footer__about">
 
-                <h4>درباره BLOGPY</h4>
+                <h4>درباره {{article.author}}</h4>
 
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
 

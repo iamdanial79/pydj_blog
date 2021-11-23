@@ -47,3 +47,11 @@ class contactpage(TemplateView):
 
 class aboutpage(TemplateView):
     template_name = "page-about.html"
+
+class categorypage(TemplateView):
+    template_name = "category.html"
+class articlepage(TemplateView):
+    template_name = "article.html" ,
+    {
+    'article': article.objects.all
+    }

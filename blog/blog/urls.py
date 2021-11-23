@@ -30,3 +30,5 @@ if settings.DEBUG :
     urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
     urlpatterns += static('/contact/static/',document_root = settings.STATIC_ROOT)
     urlpatterns += static('/about/static/',document_root = settings.STATIC_ROOT)
+    urlpatterns += static('/category/static/',document_root = settings.STATIC_ROOT)
+    urlpatterns += static('/article/static/',document_root = settings.STATIC_ROOT)
