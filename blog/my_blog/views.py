@@ -43,3 +43,7 @@ class indexpage(TemplateView):
 
 class contactpage(TemplateView):
     template_name = "page-contact.html"
+
+
+class aboutpage(TemplateView):
+    template_name = "page-about.html"
