@@ -23,7 +23,8 @@ from django.conf.urls import url,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^ckeditor',include('ckeditor_uploader.urls')),
-    url(r'^',include('my_blog.urls'))
+    url(r'^',include('my_blog.urls')),
+    url(r'^api-auth/',include('rest_framework.urls')),
 ]
  
 if settings.DEBUG :
@@ -31,4 +32,3 @@ if settings.DEBUG :
     urlpatterns += static('/contact/static/',document_root = settings.STATIC_ROOT)
     urlpatterns += static('/about/static/',document_root = settings.STATIC_ROOT)
     urlpatterns += static('/category/static/',document_root = settings.STATIC_ROOT)
-    urlpatterns += static('/article/static/',document_root = settings.STATIC_ROOT)

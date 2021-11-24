@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import *
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 class indexpage(TemplateView):
     
@@ -30,15 +32,36 @@ class indexpage(TemplateView):
             })
         
         
-        
-        
-        
-
         context = {
             'ar_data' : ar_data    ,
             'poromote_data' : pr_data                  #all of the data that related to the article
         }
         return render(request,'index.html',context)
+
+
+class allarticleapi(APIView):
+
+    def get(self,request,format=None):
+        try:
+            all_ar = article.objects.all()[5:]
+            data = []
+            for ar in all_ar:
+                data.append(
+                    {
+                        'title':ar.title,
+                        'cover':ar.cover.url,
+                        'content':ar.content,
+                        'category':ar.category.title,
+                        'author':ar.author.user.first_name +' '+ar.author.user.last_name,
+                        'created_at':ar.created_at,
+                        'poromote':ar.poromote,
+
+                    }
+                )
+            return Response({'data':data},status=status.HTTP_200_OK)
+
+        except:
+            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class contactpage(TemplateView):
@@ -50,8 +73,3 @@ class aboutpage(TemplateView):
 
 class categorypage(TemplateView):
     template_name = "category.html"
-class articlepage(TemplateView):
-    template_name = "article.html" ,
-    {
-    'article': article.objects.all
-    }
