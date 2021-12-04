@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^article/$',views.singlearticleapi.as_view(),name='single_article'),
     url(r'^article/all/$',views.allarticleapi.as_view(),name='all_article'),
     url(r'^article/search/$',views.SearchArticleApi.as_view(),name='search_article'),
+    url(r'^article/submit/$',views.SubmitArticleApi.as_view(),name='submit_article'),
 
 ]

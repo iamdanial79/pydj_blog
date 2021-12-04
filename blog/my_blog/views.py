@@ -111,4 +111,34 @@ class SearchArticleApi(APIView):
         except:
             return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        
+
+class SubmitArticleApi(APIView):
+    def post(self,request,format=None):
+        try:
+            ser = serializers.SubmitArticleSerializer(data=request.data)
+            if ser.is_valid():
+                title = ser.data.get('title')
+                cover = request.FILES['cover']
+                content = ser.data.get('content')
+                category_id = ser.data.get('category_id')
+                author_id = ser.data.get('author_id')
+                poromote = ser.data.get('poromote')
+            else:
+                return Response({'status':'error'},status.HTTP_200_OK)
+            
+            user = User.objects.get(id=author_id)
+            author = userprofile.objects.get(user=user)
+            category = Category.objects.get(id=category_id) 
+            
+            ar = article()
+            ar.title = title
+            ar.cover = cover
+            ar.content = content
+            ar.poromote = poromote
+            ar.category = category
+            ar.author = author
+            ar.save()
+
+            return Response({'status':'ok'},status.HTTP_200_OK)
+        except:
+            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
