@@ -15,3 +15,11 @@ class SubmitArticleSerializer(serializers.Serializer):
     category_id = serializers.IntegerField(required=True, allow_null =False)
     author_id = serializers.IntegerField(required=True, allow_null =False)
     poromote = serializers.BooleanField(required=True, allow_null=False )
+
+
+class UpdateCoverSerializers(serializers.Serializer):
+    article_id = serializers.IntegerField(required=True,allow_null= False)
+    cover = serializers.ImageField(required =True , allow_null= False , allow_empty_file=False)
+
+class DeleteArticleSerializer(serializers.Serializer):
+    article_id = serializers.IntegerField(required=True , allow_null=False)

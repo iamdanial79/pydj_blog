@@ -124,7 +124,7 @@ class SubmitArticleApi(APIView):
                 author_id = ser.data.get('author_id')
                 poromote = ser.data.get('poromote')
             else:
-                return Response({'status':'error'},status.HTTP_200_OK)
+                return Response({'status':'BAD_REQUEST'},status.HTTP_400_BAD_REQUEST)
             
             user = User.objects.get(id=author_id)
             author = userprofile.objects.get(user=user)
@@ -141,4 +141,40 @@ class SubmitArticleApi(APIView):
 
             return Response({'status':'ok'},status.HTTP_200_OK)
         except:
-            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
+
+
+class UpdateArticleApi(APIView):
+    def post(self,request,format=None):
+        try:
+            seri = serializers.UpdateCoverSerializers(data=request.data)
+            if seri.is_valid():
+                article_id = seri.data.get('article_id')
+                cover = request.FILES['cover']
+            else:
+                return Response({'status':'BAD_REQUEST'},status=status.HTTP_400_BAD_REQUEST)
+           
+            article.objects.filter(id=article_id).update(cover = cover)
+           
+            return Response({'status':'ok'},status.HTTP_200_OK)
+
+        except:
+            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
+
+
+class DeleteArticleApi(APIView):
+    def post(self,request,format=None):
+        try:
+            seri=serializers.DeleteArticleSerializer(data=request.data)
+            if seri.is_valid():
+                article_id = seri.data.get('article_id')
+            else:
+                return Response({'status':'BAD_REQUEST'},status=status.HTTP_400_BAD_REQUEST)
+
+            article.objects.filter(id=article_id).delete()
+
+            return Response({'status':'ok'},status.HTTP_200_OK)
+
+        except:
+            return Response({'status':'Internal server error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
+
