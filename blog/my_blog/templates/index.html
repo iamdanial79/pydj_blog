@@ -62,7 +62,7 @@
                               <li class="current"><a href="{% url 'index' %}" title="">خانه</a></li>
             </ul> <!-- end header__nav -->
 
-            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
+            <a href="{% url 'index' %}" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
 
         </nav> <!-- end header__nav-wrap -->
 
@@ -85,11 +85,11 @@
                             <div class="entry__content">
                                 <span class="entry__category"><a href="#0">{{promotions.category}}</a></span>
 
-                                <h1><a href="#0" title="">{{promotions.title}}</a></h1>
+                                <h1><a href="article/?article_title={{ promotions.title }}" title="">{{promotions.title}}</a></h1>
 
                                 <div class="entry__info">
                                     <ul class="entry__meta">
-                                        <li><a href="#0">{{promotions.author}}</a></li>
+                                        <li>{{promotions.author}}</li>
                                     </ul>
                                 </div>
                             </div> <!-- end entry__content -->
@@ -117,7 +117,7 @@
 
                     <div class="item-entry" data-aos="zoom-in">
                         <div class="item-entry__thumb">
-                            <a href="/0#" class="item-entry__thumb-link">
+                            <a href="article/?article_title={{ article.title }}" class="item-entry__thumb-link">
                                 <img src="{{ article.cover.url }}" alt="">
                             </a>
                         </div>
@@ -127,7 +127,7 @@
                                 <a href="{% url 'category' %}">"{{article.category}}"</a>
                             </div>
 
-                            <h1 class="item-entry__title"><a href="/0#">{{ article.title }}</a></h1> <!--add title-->
+                            <h1 class="item-entry__title"><a href="article/?article_title={{ article.title }}">{{ article.title }}</a></h1> <!--add title-->
 
                             <div class="item-entry__date">
                                 <a href="/0#">{{ article.article_date }}</a>

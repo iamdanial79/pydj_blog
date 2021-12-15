@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import *
@@ -75,17 +76,32 @@ class aboutpage(TemplateView):
     template_name = "page-about.html"
 
 class categorypage(TemplateView):
-    template_name = "category.html"
+    
+    def get(self, request, **kwargs):
+        all_c=[]
+        all_category = Category.objects.all()
+        for c in all_category:
+            all_c.append ({
+                'title' : c.title,
+                'cover' : c.cover,
+            })
+        context = {'all_categorys':all_c}
+        return render(request,'category.html',context)
+            
+
 
 
 class singlearticleapi(APIView):
     def get(self, request, format=None):
         try:
             ar_title = request.GET['article_title']
-            ar = article.objects.filter(title__contains=ar_title)
+            ar = article.objects.filter(title=ar_title)
             ser_data = serializers.singlearticleserialazers(ar, many=True)
             data = ser_data.data
-            return Response({'data': data}, status=status.HTTP_200_OK)
+            context = {'title':data}
+            return render(request,'title.html', context)
+            
+            
 
         except:
             return Response({'status': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
